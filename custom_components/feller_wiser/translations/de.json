@@ -1,0 +1,234 @@
+{
+  "config": {
+    "flow_title": "{name} ({sn})",
+    "step": {
+      "user": {
+        "title": "Wiser by Feller µGateway",
+        "description": "Adresse des µGateways eingeben (z. B. `wiser-00123456.local` oder die IP-Adresse).",
+        "data": {
+          "host": "Host",
+          "username": "API-Benutzername"
+        },
+        "data_description": {
+          "host": "Hostname oder IP-Adresse des µGateways.",
+          "username": "Kontoname, der auf dem Gateway angelegt wird. Wird derselbe Name erneut verbunden, ersetzt das den alten Token."
+        }
+      },
+      "discovery_confirm": {
+        "title": "{name} einrichten",
+        "description": "µGateway {sn} wurde unter {host} gefunden. Weiter, um Home Assistant damit zu koppeln."
+      },
+      "claim": {
+        "title": "Taste am µGateway drücken"
+      },
+      "claim_failed": {
+        "title": "Kopplung fehlgeschlagen",
+        "description": "Die Kopplung mit {name} ({host}) hat nicht geklappt. Mit Senden erneut versuchen."
+      },
+      "reauth_confirm": {
+        "title": "{name} neu koppeln",
+        "description": "Das Gateway akzeptiert den gespeicherten Token nicht mehr. Ein neuer wird erstellt, indem innerhalb von 30 Sekunden eine Taste am µGateway gedrückt wird."
+      },
+      "reconfigure": {
+        "title": "Gateway-Adresse ändern",
+        "data": {
+          "host": "Host"
+        }
+      }
+    },
+    "progress": {
+      "claim_press_button": "Drücke innerhalb von {timeout} Sekunden eine beliebige Taste am µGateway {name}. Die LEDs blinken währenddessen violett. Räume und Namen werden automatisch aus der Wiser-App übernommen."
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Gateway nicht möglich.",
+      "not_wiser_gateway": "Dieser Host sieht nicht wie ein Wiser µGateway aus.",
+      "claim_timeout": "Es wurde nicht rechtzeitig eine Taste gedrückt.",
+      "api_locked": "Das Gateway hat die Anfrage abgelehnt (API gesperrt).",
+      "no_site_info": "Das Gateway hat noch keine Site-Informationen. Zuerst die Einrichtung in der Wiser-App abschliessen.",
+      "invalid_source": "Keines der bekannten Konten existiert auf diesem Gateway.",
+      "unknown": "Unerwarteter Fehler."
+    },
+    "abort": {
+      "already_configured": "Dieses Gateway ist bereits eingerichtet.",
+      "already_in_progress": "Die Einrichtung läuft bereits.",
+      "cannot_connect": "Verbindung zum Gateway nicht möglich.",
+      "not_wiser_gateway": "Dieser Host sieht nicht wie ein Wiser µGateway aus.",
+      "reauth_successful": "Neu koppeln erfolgreich.",
+      "reconfigure_successful": "Adresse aktualisiert.",
+      "wrong_device": "Die Adresse gehört zu einem anderen Gateway.",
+      "unknown": "Unerwarteter Fehler."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen Wiser by Feller",
+        "data": {
+          "poll_interval": "Abfrageintervall",
+          "register_buttons": "Wandtaster für Ereignisse registrieren",
+          "rooms_as_areas": "Wiser-Räume als Bereiche vorschlagen",
+          "tilt_mode": "Lamellen-Kippmodus",
+          "click_margin_ms": "Zusätzliche Pause zwischen Kipp-Clicks",
+          "fallback_click_pause_ms": "Pause zwischen Kipp-Clicks, wenn die Schrittdauer unbekannt ist",
+          "tilt_settle_ms": "Wartezeit vor der Kontrolle des Tilts",
+          "tilt_max_rounds": "Maximale Korrekturrunden",
+          "tilt_fallback_reference": "Referenzfahrt, wenn der Tilt danach noch abweicht",
+          "read_motor_config": "Motorkonfiguration von den Geräten lesen"
+        },
+        "data_description": {
+          "poll_interval": "REST-Abgleich, solange der Websocket verbunden ist.",
+          "tilt_mode": "auto: einzelne Kipp-Clicks mit Kontrolle; reference: immer eine Referenzfahrt (langsamer, wie in der Wiser-App)."
+        }
+      }
+    }
+  },
+  "selector": {
+    "tilt_mode": {
+      "options": {
+        "auto": "Auto (einzelne Clicks, kontrolliert)",
+        "absolute": "Absolut (nur Clicks)",
+        "relative": "Relativ (Differenz mit Vorzeichen)",
+        "reference": "Referenzfahrt (target_state)"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "websocket_connected": { "name": "Push-Verbindung" },
+      "motor_problem": { "name": "Motorstörung" },
+      "sensor_rain": { "name": "Regen" },
+      "sensor_hail": { "name": "Hagel" },
+      "sensor_window": { "name": "Fenster" }
+    },
+    "button": {
+      "identify": { "name": "Identifizieren" },
+      "refresh_structure": { "name": "Struktur neu laden" },
+      "reload_motor_config": { "name": "Motorkonfiguration neu lesen" }
+    },
+    "event": {
+      "button": {
+        "name": "Taste {channel}",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "click": "Klick",
+              "press": "Langer Druck",
+              "release": "Loslassen"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "tilt_step": { "name": "Kippschritt" }
+    },
+    "sensor": {
+      "rssi": { "name": "WLAN-Signal" },
+      "uptime": { "name": "Betriebszeit" },
+      "mem_free": { "name": "Freier Speicher" },
+      "wlan_resets": { "name": "WLAN-Resets" },
+      "sockets": { "name": "Offene Verbindungen" },
+      "sensor_temperature": { "name": "Temperatur" },
+      "sensor_illuminance": { "name": "Helligkeit" },
+      "sensor_brightness": { "name": "Helligkeit" },
+      "sensor_wind": { "name": "Windgeschwindigkeit" },
+      "sensor_humidity": { "name": "Luftfeuchtigkeit" },
+      "sensor_co2": { "name": "CO2" }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "click": "{subtype} geklickt",
+      "press": "{subtype} lange gedrückt",
+      "release": "{subtype} losgelassen"
+    },
+    "trigger_subtype": {
+      "button_1": "Taste 1",
+      "button_2": "Taste 2",
+      "button_3": "Taste 3",
+      "button_4": "Taste 4",
+      "button_5": "Taste 5",
+      "button_6": "Taste 6",
+      "button_7": "Taste 7",
+      "button_8": "Taste 8"
+    }
+  },
+  "services": {
+    "set_tilt_steps": {
+      "name": "Kippschritte setzen",
+      "description": "Kippt eine Lamellenstore auf eine Lamellenstellung in rohen Wiser-Schritten (0 = geschlossen, 9 = horizontal). Der Modus auto nutzt einzelne Click-Kommandos relativ zur aktuellen Stellung und kontrolliert das Ergebnis.",
+      "fields": {
+        "steps": { "name": "Schritte", "description": "Zielschritt 0-9, im Modus relative eine Differenz -9..9 mit Vorzeichen." },
+        "mode": { "name": "Modus", "description": "auto (Standard): Clicks, Referenzfahrt für 0 und als Fallback. absolute: nur Clicks. relative: Clicks um die Differenz. reference: target_state mit Referenzfahrt." },
+        "max_rounds": { "name": "Korrekturrunden", "description": "Überschreibt die Option der Integration für diesen Aufruf." },
+        "wait": { "name": "Warten", "description": "Auf das Ende des Kippens warten (Standard) oder sofort zurückkehren." }
+      }
+    },
+    "set_target_state": {
+      "name": "Zielzustand setzen (roh)",
+      "description": "Sendet einen rohen target_state an die Store: level 0-10000 (0 = ganz offen) und/oder tilt 0-9. Ein Tilt löst immer eine Referenzfahrt aus.",
+      "fields": {
+        "level": { "name": "Level", "description": "0 = ganz offen/oben, 10000 = ganz geschlossen/unten." },
+        "tilt": { "name": "Kippschritte", "description": "0 = Lamellen geschlossen, 9 = horizontal." }
+      }
+    },
+    "load_ctrl": {
+      "name": "Laststeuerung (roh)",
+      "description": "Simuliert einen Tastendruck auf der Last (Taste und Ereignis wie in der Wiser-API). Ohne Sicherheitsprüfungen.",
+      "fields": {
+        "button": { "name": "Taste", "description": "up, down, stop, toggle, on oder off." },
+        "event": { "name": "Ereignis", "description": "click (kurz), press (lang) oder release." }
+      }
+    },
+    "refresh_structure": {
+      "name": "Struktur neu laden",
+      "description": "Liest Lasten, Räume, Geräte, Szenen und Taster erneut vom Gateway.",
+      "fields": {
+        "config_entry_id": { "name": "Gateway", "description": "Auf ein Gateway beschränken (optional)." }
+      }
+    }
+  },
+  "exceptions": {
+    "blind_locked": { "message": "Die Store ist durch den Wetterschutz gesperrt." },
+    "motor_learning": { "message": "Der Motor ist noch nicht kalibriert; nur Öffnen, Schliessen und Stopp sind möglich." },
+    "not_tiltable": { "message": "{entity_id} hat keine kippbaren Lamellen." },
+    "not_a_cover": { "message": "{entity_id} ist keine Store." },
+    "no_ctrl_support": { "message": "{entity_id} unterstützt keine rohen Steuerbefehle." },
+    "tilt_unknown": { "message": "Der aktuelle Tilt ist unbekannt; Modus absolute oder reference verwenden." },
+    "tilt_timeout": { "message": "Das Kippen wurde nicht rechtzeitig abgeschlossen." },
+    "gateway_error": { "message": "Das Gateway hat den Befehl abgelehnt: {error}" },
+    "no_target_entities": { "message": "Keine Wiser-by-Feller-Entitäten als Ziel angegeben." },
+    "negative_steps_absolute": { "message": "Negative Schritte sind nur im Modus relative erlaubt." },
+    "no_config_entry": { "message": "Kein passendes Wiser-by-Feller-Gateway ist geladen." },
+    "scene_without_job": { "message": "Diese Szene hat auf dem Gateway keinen Job." }
+  },
+  "issues": {
+    "gateway_serial_mismatch": {
+      "title": "Anderes Gateway unter {host}",
+      "description": "Der Host {host} meldet die Seriennummer {found}, dieser Eintrag wurde aber für {expected} eingerichtet. Adresse per Neu konfigurieren korrigieren oder den Eintrag entfernen."
+    },
+    "firmware_too_old": {
+      "title": "µGateway-Firmware {version} ist alt",
+      "description": "Ereignisse der Wandtaster brauchen Firmware {required} oder neuer. µGateway in der Wiser-App aktualisieren."
+    },
+    "motor_uncalibrated": {
+      "title": "Store {name} ist nicht kalibriert",
+      "description": "Der Motor meldet das Learning-Flag; Position und Tilt sind unbekannt, bis die Endlagen in der Wiser-App eingelernt sind."
+    },
+    "buttons_unregistered": {
+      "title": "{count} Wandtaster senden keine Ereignisse",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Wandtaster registrieren",
+            "description": "Alle schlafenden Taster auf dem Gateway registrieren, damit Home Assistant Klick, langen Druck und Loslassen erhält."
+          }
+        }
+      }
+    },
+    "device_details_failed": {
+      "title": "Gerätedetails konnten nicht gelesen werden",
+      "description": "Ein-/Ausgänge oder Motorkonfiguration von {devices} konnten nicht gelesen werden. Storen nutzen die Standard-Zeiten fürs Kippen. Mit dem Button «Motorkonfiguration neu lesen» erneut versuchen."
+    }
+  }
+}

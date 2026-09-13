@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+junit.xml
+# local Home Assistant dev instance (config/ keeps only configuration.yaml)
+config/*
+!config/configuration.yaml
+!config/.gitignore
+# captured gateway dumps may contain tokens
+scratch/

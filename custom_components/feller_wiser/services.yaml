@@ -1,0 +1,90 @@
+set_tilt_steps:
+  target:
+    entity:
+      integration: feller_wiser
+      domain: cover
+  fields:
+    steps:
+      required: true
+      example: 4
+      selector:
+        number:
+          min: -9
+          max: 9
+          step: 1
+          mode: box
+    mode:
+      default: auto
+      selector:
+        select:
+          options:
+            - auto
+            - absolute
+            - relative
+            - reference
+          translation_key: tilt_mode
+    max_rounds:
+      selector:
+        number:
+          min: 1
+          max: 5
+          step: 1
+    wait:
+      default: true
+      selector:
+        boolean:
+
+set_target_state:
+  target:
+    entity:
+      integration: feller_wiser
+      domain: cover
+  fields:
+    level:
+      example: 10000
+      selector:
+        number:
+          min: 0
+          max: 10000
+          step: 1
+          mode: box
+    tilt:
+      example: 4
+      selector:
+        number:
+          min: 0
+          max: 9
+          step: 1
+          mode: box
+
+load_ctrl:
+  target:
+    entity:
+      integration: feller_wiser
+  fields:
+    button:
+      required: true
+      selector:
+        select:
+          options:
+            - up
+            - down
+            - stop
+            - toggle
+            - "on"
+            - "off"
+    event:
+      default: click
+      selector:
+        select:
+          options:
+            - click
+            - press
+            - release
+
+refresh_structure:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: feller_wiser

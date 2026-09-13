@@ -1,0 +1,16 @@
+{
+  "domain": "feller_wiser",
+  "name": "Wiser by Feller",
+  "codeowners": ["@damianschwegler"],
+  "config_flow": true,
+  "dependencies": [],
+  "dhcp": [{ "hostname": "wiser-*" }],
+  "documentation": "https://github.com/damianschwegler/ha-feller-wiser",
+  "integration_type": "hub",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/damianschwegler/ha-feller-wiser/issues",
+  "loggers": ["custom_components.feller_wiser.api"],
+  "requirements": [],
+  "version": "0.1.0",
+  "zeroconf": [{ "type": "_http._tcp.local.", "name": "wiser-*" }]
+}

@@ -1,0 +1,32 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "websocket_connected": { "default": "mdi:lan-connect", "state": { "off": "mdi:lan-disconnect" } },
+      "motor_problem": { "default": "mdi:alert-circle-outline" }
+    },
+    "button": {
+      "identify": { "default": "mdi:led-on" },
+      "refresh_structure": { "default": "mdi:refresh" },
+      "reload_motor_config": { "default": "mdi:cog-refresh" }
+    },
+    "event": {
+      "button": { "default": "mdi:gesture-tap-button" }
+    },
+    "number": {
+      "tilt_step": { "default": "mdi:blinds-horizontal" }
+    },
+    "sensor": {
+      "rssi": { "default": "mdi:wifi" },
+      "uptime": { "default": "mdi:timer-outline" },
+      "mem_free": { "default": "mdi:memory" },
+      "wlan_resets": { "default": "mdi:wifi-refresh" },
+      "sockets": { "default": "mdi:lan" }
+    }
+  },
+  "services": {
+    "set_tilt_steps": { "service": "mdi:blinds-horizontal" },
+    "set_target_state": { "service": "mdi:blinds" },
+    "load_ctrl": { "service": "mdi:gesture-tap-button" },
+    "refresh_structure": { "service": "mdi:refresh" }
+  }
+}

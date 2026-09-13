@@ -1,0 +1,223 @@
+{
+  "info": {
+    "product": "9020.001.002",
+    "instance_id": "1800",
+    "sn": "00429931",
+    "api": "2.0",
+    "sw": "6.0.46",
+    "boot": "1.3.0",
+    "hw": "2"
+  },
+  "site": { "name": "Zuhause", "rooms_order": [1, 2, 3, 4, 5, 6, 7, 8] },
+  "net": { "hostname": "wiser-00429931", "ip": "192.168.1.50", "mac_addr": "02:03:04:05:06:07", "cloud_cn": "" },
+  "health": {
+    "reboot_cause": "HARD_RESET",
+    "uptime": 12345,
+    "mem_size": 291712,
+    "mem_free": 80688,
+    "flash_size": 26210304,
+    "flash_free": 20000000,
+    "sockets": 3,
+    "wlan_rssi": -58,
+    "wlan_resets": 0,
+    "max_tasks": 12
+  },
+  "accounts": [
+    { "user": "admin", "secret": "admin-secret-0000", "login": "damian" },
+    { "user": "installer", "secret": "installer-secret-0000" }
+  ],
+  "rooms": [
+    { "id": 1, "name": "Büro", "kind": 12, "load_order": [64, 20] },
+    { "id": 2, "name": "Schlafzimmer", "kind": 1, "load_order": [14, 15] },
+    { "id": 3, "name": "Kinderzimmer", "kind": 2, "load_order": [2] },
+    { "id": 4, "name": "Gästezimmer", "kind": 2, "load_order": [3] },
+    { "id": 5, "name": "Balkon", "kind": 20, "load_order": [6, 7, 1] },
+    { "id": 6, "name": "Wohnzimmer", "kind": 3, "load_order": [81, 83, 21, 22] },
+    { "id": 7, "name": "Esszimmer", "kind": 4, "load_order": [82, 23] },
+    { "id": 8, "name": "Gang", "kind": 9, "load_order": [24] }
+  ],
+  "devices": [
+    {
+      "id": "00001001",
+      "last_seen": 5,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3406.B", "address": "0x00001001", "comm_name": "Storenschalter 1K", "serial_nr": "011110_B_000101", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3406.4.S.A.F", "address": "", "comm_name": "Storenschalter 1K Sz", "serial_nr": "018443_B_000101", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }],
+      "outputs": [{ "load": 64, "type": "motor", "sub_type": "", "config": { "tilt_ms": 300, "tiltable": true, "relay_mode": false } }]
+    },
+    {
+      "id": "00001002",
+      "last_seen": 3,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3407.B", "address": "0x00001002", "comm_name": "Storenschalter 2K", "serial_nr": "011110_B_000102", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3407.4.S.A.F", "address": "", "comm_name": "Storenschalter 2K Sz", "serial_nr": "018443_B_000102", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }, { "type": "up down" }],
+      "outputs": [
+        { "load": 14, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } },
+        { "load": 15, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } }
+      ]
+    },
+    {
+      "id": "00001003",
+      "last_seen": 8,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3407.B", "address": "0x00001003", "comm_name": "Storenschalter 2K", "serial_nr": "011110_B_000103", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3407.4.S.A.F", "address": "", "comm_name": "Storenschalter 2K Sz", "serial_nr": "018443_B_000103", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }, { "type": "up down" }],
+      "outputs": [
+        { "load": 2, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } },
+        { "load": 3, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } }
+      ]
+    },
+    {
+      "id": "00001004",
+      "last_seen": 2,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3407.B", "address": "0x00001004", "comm_name": "Storenschalter 2K", "serial_nr": "011110_B_000104", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3407.4.S.A.F", "address": "", "comm_name": "Storenschalter 2K Sz", "serial_nr": "018443_B_000104", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }, { "type": "up down" }],
+      "outputs": [
+        { "load": 6, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } },
+        { "load": 7, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } }
+      ]
+    },
+    {
+      "id": "00001005",
+      "last_seen": 4,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3406.B", "address": "0x00001005", "comm_name": "Storenschalter 1K", "serial_nr": "011110_B_000105", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3406.4.S.A.F", "address": "", "comm_name": "Storenschalter 1K Sz", "serial_nr": "018443_B_000105", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }],
+      "outputs": [{ "load": 1, "type": "motor", "sub_type": "", "config": { "tilt_ms": 0, "tiltable": false, "relay_mode": false } }]
+    },
+    {
+      "id": "00001006",
+      "last_seen": 6,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3407.B", "address": "0x00001006", "comm_name": "Storenschalter 2K", "serial_nr": "011110_B_000106", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3407.4.S.A.F", "address": "", "comm_name": "Storenschalter 2K Sz", "serial_nr": "018443_B_000106", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }, { "type": "up down" }],
+      "outputs": [
+        { "load": 81, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } },
+        { "load": 82, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } }
+      ]
+    },
+    {
+      "id": "00001007",
+      "last_seen": 7,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1110", "fw_version": "0x00501a30", "comm_ref": "3406.B", "address": "0x00001007", "comm_name": "Storenschalter 1K", "serial_nr": "011110_B_000107", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3406.4.S.A.F", "address": "", "comm_name": "Storenschalter 1K Sz", "serial_nr": "018443_B_000107", "cmd_matrix": "0x0002", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }],
+      "outputs": [{ "load": 83, "type": "motor", "sub_type": "", "config": { "tilt_ms": 250, "tiltable": true, "relay_mode": false } }]
+    },
+    {
+      "id": "00002001",
+      "last_seen": 1,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1120", "fw_version": "0x00501a30", "comm_ref": "3401.B", "address": "0x00002001", "comm_name": "Druckschalter 1K", "serial_nr": "011120_B_000201", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3401.1.S.A.F", "address": "", "comm_name": "Druckschalter 1K Sz", "serial_nr": "018443_B_000201", "cmd_matrix": "0x0001", "nubes_id": "" },
+      "inputs": [{ "type": "toggle" }],
+      "outputs": [{ "load": 20, "type": "onoff", "sub_type": "", "config": { "delayed_off": false } }]
+    },
+    {
+      "id": "00002002",
+      "last_seen": 1,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1130", "fw_version": "0x00501a30", "comm_ref": "3411.B", "address": "0x00002002", "comm_name": "Dimmer 1K", "serial_nr": "011130_B_000202", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3411.1.S.A.F", "address": "", "comm_name": "Dimmer 1K Sz", "serial_nr": "018443_B_000202", "cmd_matrix": "0x0001", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }],
+      "outputs": [{ "load": 21, "type": "dim", "sub_type": "", "config": { "dim_mode": "rl", "min_level": 100, "max_level": 10000 } }]
+    },
+    {
+      "id": "00002003",
+      "last_seen": 2,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1140", "fw_version": "0x00501a30", "comm_ref": "3421.B", "address": "0x00002003", "comm_name": "DALI Steuerung 2K", "serial_nr": "011140_B_000203", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3421.2.S.A.F", "address": "", "comm_name": "DALI Steuerung 2K Sz", "serial_nr": "018443_B_000203", "cmd_matrix": "0x0001", "nubes_id": "" },
+      "inputs": [{ "type": "up down" }, { "type": "scene" }],
+      "outputs": [
+        { "load": 22, "type": "dali", "sub_type": "tw", "config": { "mode": "tw" } },
+        { "load": 23, "type": "dali", "sub_type": "rgb", "config": { "mode": "rgb" } }
+      ]
+    },
+    {
+      "id": "00002004",
+      "last_seen": 3,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1120", "fw_version": "0x00501a30", "comm_ref": "3401.B", "address": "0x00002004", "comm_name": "Druckschalter 1K", "serial_nr": "011120_B_000204", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3401.1.S.A.F", "address": "", "comm_name": "Druckschalter 1K Sz", "serial_nr": "018443_B_000204", "cmd_matrix": "0x0001", "nubes_id": "" },
+      "inputs": [{ "type": "toggle" }],
+      "outputs": [{ "load": 24, "type": "onoff", "sub_type": "", "config": { "delayed_off": false } }]
+    },
+    {
+      "id": "00003001",
+      "last_seen": 9,
+      "a": { "fw_id": "0x0100", "hw_id": "0x1150", "fw_version": "0x00501a30", "comm_ref": "3440.B", "address": "0x00003001", "comm_name": "Szenentaster 4K", "serial_nr": "011150_B_000301", "nubes_id": "" },
+      "c": { "fw_id": "0x8402", "hw_id": "0x8443", "fw_version": "0x10106001", "comm_ref": "926-3440.4.S.A.F", "address": "", "comm_name": "Szenentaster 4K Sz", "serial_nr": "018443_B_000301", "cmd_matrix": "0x0004", "nubes_id": "" },
+      "inputs": [{ "type": "scene" }, { "type": "scene" }, { "type": "scene" }, { "type": "scene" }],
+      "outputs": []
+    },
+    {
+      "id": "00004001",
+      "last_seen": 20,
+      "a": { "fw_id": "0x0200", "hw_id": "0x2110", "fw_version": "0x00501a30", "comm_ref": "3560.B", "address": "0x00004001", "comm_name": "Wetterstation", "serial_nr": "012110_B_000401", "nubes_id": "" },
+      "c": null,
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "id": "00005001",
+      "last_seen": 11,
+      "a": { "fw_id": "0x0300", "hw_id": "0x3110", "fw_version": "0x00501a30", "comm_ref": "3570.B", "address": "0x00005001", "comm_name": "Raumthermostat", "serial_nr": "013110_B_000501", "nubes_id": "" },
+      "c": null,
+      "inputs": [],
+      "outputs": [{ "load": 30, "type": "hvac", "sub_type": "" }]
+    }
+  ],
+  "loads": [
+    { "id": 1, "name": "Sonnenstore", "type": "motor", "device": "00001005", "channel": 0, "room": 5, "kind": 3, "state": { "level": 0, "tilt": 0 } },
+    { "id": 2, "name": "Kinderzimmer", "type": "motor", "device": "00001003", "channel": 0, "room": 3, "kind": 1, "state": { "level": 0, "tilt": 0 } },
+    { "id": 3, "name": "Gästezimmer", "type": "motor", "device": "00001003", "channel": 1, "room": 4, "kind": 1, "state": { "level": 0, "tilt": 0 } },
+    { "id": 6, "name": "Balkon links", "type": "motor", "device": "00001004", "channel": 0, "room": 5, "kind": 1, "state": { "level": 10000, "tilt": 3 } },
+    { "id": 7, "name": "Balkon rechts", "type": "motor", "device": "00001004", "channel": 1, "room": 5, "kind": 1, "state": { "level": 10000, "tilt": 3 } },
+    { "id": 14, "name": "Schlafzimmer Seite", "type": "motor", "device": "00001002", "channel": 0, "room": 2, "kind": 1, "state": { "level": 0, "tilt": 0 } },
+    { "id": 15, "name": "Schlafzimmer Front", "type": "motor", "device": "00001002", "channel": 1, "room": 2, "kind": 1, "state": { "level": 0, "tilt": 0 } },
+    { "id": 64, "name": "Büro", "type": "motor", "device": "00001001", "channel": 0, "room": 1, "kind": 1, "state": { "level": 10000, "tilt": 4 } },
+    { "id": 81, "name": "Wohnzimmer", "type": "motor", "device": "00001006", "channel": 0, "room": 6, "kind": 1, "state": { "level": 5000, "tilt": 9 } },
+    { "id": 82, "name": "Esszimmer", "type": "motor", "device": "00001006", "channel": 1, "room": 7, "kind": 1, "state": { "level": 5000, "tilt": 9 } },
+    { "id": 83, "name": "Wohnzimmer Seite", "type": "motor", "device": "00001007", "channel": 0, "room": 6, "kind": 1, "state": { "level": 0, "tilt": 0 } },
+    { "id": 20, "name": "Bürolampe", "type": "onoff", "device": "00002001", "channel": 0, "room": 1, "kind": 0, "state": { "bri": 0 } },
+    { "id": 21, "name": "Stehlampe", "type": "dim", "device": "00002002", "channel": 0, "room": 6, "kind": 0, "state": { "bri": 5000 } },
+    { "id": 22, "name": "Deckenlicht", "type": "dali", "sub_type": "tw", "device": "00002003", "channel": 0, "room": 6, "kind": 0, "state": { "bri": 8000, "ct": 3000 } },
+    { "id": 23, "name": "LED-Band", "type": "dali", "sub_type": "rgb", "device": "00002003", "channel": 1, "room": 7, "kind": 0, "state": { "bri": 10000, "red": 255, "green": 128, "blue": 0, "white": 0 } },
+    { "id": 24, "name": "Steckdose Gang", "type": "onoff", "device": "00002004", "channel": 0, "room": 8, "kind": 1, "state": { "bri": 10000 } }
+  ],
+  "scenes": [
+    { "id": 40, "name": "Alles zu", "kind": 2, "job": 50 },
+    { "id": 41, "name": "Kino", "kind": 5, "job": 51 }
+  ],
+  "jobs": [
+    { "id": 50, "target_states": [{ "load": 81, "level": 10000, "tilt": 0 }, { "load": 82, "level": 10000, "tilt": 0 }], "flag_values": [], "scripts": [], "scenes": [40] },
+    { "id": 51, "target_states": [{ "load": 21, "bri": 1000 }, { "load": 22, "bri": 500, "ct": 2700 }], "flag_values": [], "scripts": [], "scenes": [41] }
+  ],
+  "sensors": [
+    { "id": 19, "sub_type": "", "name": "Temperatur Wohnzimmer", "unit": "℃", "value": 21.5, "device": "00005001", "channel": 0, "type": "temperature" },
+    { "id": 23, "sub_type": "", "name": "Helligkeit", "unit": "lux", "value": 3900, "device": "00004001", "channel": 2, "type": "illuminance" },
+    { "id": 24, "sub_type": "", "name": "Wind", "unit": "m/s", "value": 2.5, "device": "00004001", "channel": 3, "type": "wind" },
+    { "id": 25, "sub_type": "", "name": "Regen", "unit": "bool", "value": 0, "device": "00004001", "channel": 4, "type": "rain" },
+    { "id": 26, "sub_type": "", "name": "Hagel", "unit": "bool", "value": 0, "device": "00004001", "channel": 5, "type": "hail" }
+  ],
+  "buttons": [
+    { "id": 101, "device": "00003001", "channel": 0, "type": "button", "sub_type": "scene", "job": 50 },
+    { "id": null, "device": "00003001", "channel": 1, "type": "button", "sub_type": "scene" },
+    { "id": null, "device": "00001001", "channel": 0, "type": "button", "sub_type": "up down" }
+  ],
+  "hvacgroups": [
+    {
+      "id": 79,
+      "name": "Wohnzimmer Heizung",
+      "loads": [30],
+      "state": {
+        "ambient_temperature": 21.5,
+        "target_temperature": 22.0,
+        "unit": "C",
+        "flags": { "remote_controlled": 0, "sensor_error": 0, "valve_error": 0, "noise": 0, "output_on": 1, "cooling": 0 }
+      }
+    }
+  ],
+  "flags": [
+    { "id": 39, "symbol": "absent", "value": false, "name": "Abwesend" },
+    { "id": 40, "symbol": "cleaning", "value": false, "name": "Putzen" }
+  ]
+}

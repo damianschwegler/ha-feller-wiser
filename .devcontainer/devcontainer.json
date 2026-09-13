@@ -1,0 +1,34 @@
+{
+  "name": "ha-feller-wiser",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.14" },
+    "ghcr.io/devcontainers-extra/features/apt-packages:1": {
+      "packages": "ffmpeg,libturbojpeg0,libpcap-dev"
+    }
+  },
+  "postCreateCommand": "scripts/setup.sh",
+  "forwardPorts": [8123, 8080],
+  "portsAttributes": {
+    "8123": { "label": "Home Assistant", "onAutoForward": "notify" },
+    "8080": { "label": "Wiser simulator", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ryanluker.vscode-coverage-gutters"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.formatOnSave": true,
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}

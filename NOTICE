@@ -1,0 +1,13 @@
+ha-feller-wiser
+Copyright 2026 Damian Schwegler
+
+This product was developed with reference to the following projects, both licensed
+under the Apache License, Version 2.0 (Copyright Syonix / Michael Burri):
+  Syonix/ha-wiser-by-feller  https://github.com/Syonix/ha-wiser-by-feller
+  Syonix/aioWiserbyfeller    https://github.com/Syonix/aioWiserbyfeller
+Files that contain code derived from those projects carry a header comment saying so.
+
+The Wiser by Feller µGateway REST/WebSocket API is documented by Feller AG at
+https://github.com/Feller-AG/wiser-api and https://github.com/Feller-AG/wiser-tutorial.
+"Wiser" and "Feller" are trademarks of their respective owners; this project is not
+affiliated with or endorsed by Feller AG or Schneider Electric.

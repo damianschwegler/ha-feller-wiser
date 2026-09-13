@@ -1,0 +1,234 @@
+{
+  "config": {
+    "flow_title": "{name} ({sn})",
+    "step": {
+      "user": {
+        "title": "Wiser by Feller µGateway",
+        "description": "Enter the address of the µGateway (for example `wiser-00123456.local` or its IP address).",
+        "data": {
+          "host": "Host",
+          "username": "API user name"
+        },
+        "data_description": {
+          "host": "Host name or IP address of the µGateway.",
+          "username": "Account name created on the gateway. Claiming the same name twice replaces the old token."
+        }
+      },
+      "discovery_confirm": {
+        "title": "Set up {name}",
+        "description": "µGateway {sn} was found at {host}. Continue to pair Home Assistant with it."
+      },
+      "claim": {
+        "title": "Press a button on the µGateway"
+      },
+      "claim_failed": {
+        "title": "Pairing failed",
+        "description": "Pairing with {name} ({host}) did not work. Press Submit to try again."
+      },
+      "reauth_confirm": {
+        "title": "Re-pair {name}",
+        "description": "The gateway no longer accepts the stored token. A new one is created by pressing a button on the µGateway within 30 seconds."
+      },
+      "reconfigure": {
+        "title": "Change gateway address",
+        "data": {
+          "host": "Host"
+        }
+      }
+    },
+    "progress": {
+      "claim_press_button": "Press any button on the µGateway {name} within {timeout} seconds. Its LEDs flash purple while it waits. Rooms and names are copied from the Wiser app automatically."
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the gateway.",
+      "not_wiser_gateway": "This host does not look like a Wiser µGateway.",
+      "claim_timeout": "No button was pressed in time.",
+      "api_locked": "The gateway rejected the request (API locked).",
+      "no_site_info": "The gateway has no site information yet. Finish the setup in the Wiser app first.",
+      "invalid_source": "None of the known accounts exist on this gateway.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This gateway is already configured.",
+      "already_in_progress": "Setup is already in progress.",
+      "cannot_connect": "Could not connect to the gateway.",
+      "not_wiser_gateway": "This host does not look like a Wiser µGateway.",
+      "reauth_successful": "Re-pairing succeeded.",
+      "reconfigure_successful": "Address updated.",
+      "wrong_device": "The address belongs to a different gateway.",
+      "unknown": "Unexpected error."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Wiser by Feller options",
+        "data": {
+          "poll_interval": "Polling interval",
+          "register_buttons": "Register wall buttons for events",
+          "rooms_as_areas": "Suggest Wiser rooms as areas",
+          "tilt_mode": "Slat tilt mode",
+          "click_margin_ms": "Extra pause between tilt clicks",
+          "fallback_click_pause_ms": "Pause between tilt clicks when the step duration is unknown",
+          "tilt_settle_ms": "Settle time before verifying the tilt",
+          "tilt_max_rounds": "Maximum tilt correction rounds",
+          "tilt_fallback_reference": "Reference run if the tilt still differs",
+          "read_motor_config": "Read the motor configuration from the devices"
+        },
+        "data_description": {
+          "poll_interval": "REST reconciliation interval while the websocket is connected.",
+          "tilt_mode": "auto: single tilt clicks with verification; reference: always a full reference run (slower, like the Wiser app)."
+        }
+      }
+    }
+  },
+  "selector": {
+    "tilt_mode": {
+      "options": {
+        "auto": "Auto (single clicks, verified)",
+        "absolute": "Absolute (clicks only)",
+        "relative": "Relative (signed delta)",
+        "reference": "Reference run (target_state)"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "websocket_connected": { "name": "Push connection" },
+      "motor_problem": { "name": "Motor problem" },
+      "sensor_rain": { "name": "Rain" },
+      "sensor_hail": { "name": "Hail" },
+      "sensor_window": { "name": "Window" }
+    },
+    "button": {
+      "identify": { "name": "Identify" },
+      "refresh_structure": { "name": "Reload structure" },
+      "reload_motor_config": { "name": "Reload motor configuration" }
+    },
+    "event": {
+      "button": {
+        "name": "Button {channel}",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "click": "Click",
+              "press": "Long press",
+              "release": "Release"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "tilt_step": { "name": "Tilt step" }
+    },
+    "sensor": {
+      "rssi": { "name": "Wi-Fi signal" },
+      "uptime": { "name": "Uptime" },
+      "mem_free": { "name": "Free memory" },
+      "wlan_resets": { "name": "Wi-Fi resets" },
+      "sockets": { "name": "Open sockets" },
+      "sensor_temperature": { "name": "Temperature" },
+      "sensor_illuminance": { "name": "Illuminance" },
+      "sensor_brightness": { "name": "Illuminance" },
+      "sensor_wind": { "name": "Wind speed" },
+      "sensor_humidity": { "name": "Humidity" },
+      "sensor_co2": { "name": "CO2" }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "click": "{subtype} clicked",
+      "press": "{subtype} long pressed",
+      "release": "{subtype} released"
+    },
+    "trigger_subtype": {
+      "button_1": "Button 1",
+      "button_2": "Button 2",
+      "button_3": "Button 3",
+      "button_4": "Button 4",
+      "button_5": "Button 5",
+      "button_6": "Button 6",
+      "button_7": "Button 7",
+      "button_8": "Button 8"
+    }
+  },
+  "services": {
+    "set_tilt_steps": {
+      "name": "Set tilt steps",
+      "description": "Tilts a venetian blind to a slat position in raw Wiser steps (0 = closed, 9 = horizontal). Auto mode uses single click commands relative to the current position and verifies the result.",
+      "fields": {
+        "steps": { "name": "Steps", "description": "Target step 0-9, or a signed delta -9..9 in relative mode." },
+        "mode": { "name": "Mode", "description": "auto (default): clicks, reference run for 0 and as fallback. absolute: clicks only. relative: clicks by delta. reference: target_state with reference run." },
+        "max_rounds": { "name": "Correction rounds", "description": "Overrides the integration option for this call." },
+        "wait": { "name": "Wait", "description": "Wait until the tilt is done (default) or return immediately." }
+      }
+    },
+    "set_target_state": {
+      "name": "Set target state (raw)",
+      "description": "Sends a raw target_state to the blind: level 0-10000 (0 = fully open) and/or tilt 0-9. A tilt always includes a reference run.",
+      "fields": {
+        "level": { "name": "Level", "description": "0 = fully open/up, 10000 = fully closed/down." },
+        "tilt": { "name": "Tilt steps", "description": "0 = slats closed, 9 = horizontal." }
+      }
+    },
+    "load_ctrl": {
+      "name": "Load control (raw)",
+      "description": "Simulates a button press on the load (button and event as in the Wiser API). No safety checks.",
+      "fields": {
+        "button": { "name": "Button", "description": "up, down, stop, toggle, on or off." },
+        "event": { "name": "Event", "description": "click (short), press (long) or release." }
+      }
+    },
+    "refresh_structure": {
+      "name": "Reload structure",
+      "description": "Reads loads, rooms, devices, scenes and buttons from the gateway again.",
+      "fields": {
+        "config_entry_id": { "name": "Gateway", "description": "Limit to one gateway (optional)." }
+      }
+    }
+  },
+  "exceptions": {
+    "blind_locked": { "message": "The blind is locked by the weather protection." },
+    "motor_learning": { "message": "The motor is not calibrated yet; only open, close and stop are possible." },
+    "not_tiltable": { "message": "{entity_id} has no tiltable slats." },
+    "not_a_cover": { "message": "{entity_id} is not a blind." },
+    "no_ctrl_support": { "message": "{entity_id} does not support raw control commands." },
+    "tilt_unknown": { "message": "The current tilt is unknown; use absolute or reference mode." },
+    "tilt_timeout": { "message": "The tilt command did not finish in time." },
+    "gateway_error": { "message": "The gateway rejected the command: {error}" },
+    "no_target_entities": { "message": "No Wiser by Feller entities were targeted." },
+    "negative_steps_absolute": { "message": "Negative steps are only allowed in relative mode." },
+    "no_config_entry": { "message": "No matching Wiser by Feller gateway is loaded." },
+    "scene_without_job": { "message": "This scene has no job on the gateway." }
+  },
+  "issues": {
+    "gateway_serial_mismatch": {
+      "title": "Different gateway at {host}",
+      "description": "The host {host} answers with serial number {found}, but this entry was set up for {expected}. Correct the address via Reconfigure or remove the entry."
+    },
+    "firmware_too_old": {
+      "title": "µGateway firmware {version} is old",
+      "description": "Wall button events need firmware {required} or newer. Update the µGateway in the Wiser app."
+    },
+    "motor_uncalibrated": {
+      "title": "Blind {name} is not calibrated",
+      "description": "The motor reports the learning flag; position and tilt are unknown until the end positions are taught in the Wiser app."
+    },
+    "buttons_unregistered": {
+      "title": "{count} wall buttons do not send events",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Register wall buttons",
+            "description": "Register all sleeping buttons on the gateway so Home Assistant receives click, long-press and release events."
+          }
+        }
+      }
+    },
+    "device_details_failed": {
+      "title": "Device details could not be read",
+      "description": "Inputs, outputs or motor configuration of {devices} could not be read. Blinds fall back to default tilt timing. Use the 'Reload motor configuration' button to retry."
+    }
+  }
+}

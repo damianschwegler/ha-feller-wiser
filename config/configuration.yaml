@@ -1,0 +1,12 @@
+# Local Home Assistant dev instance (scripts/develop.sh). Not deployed anywhere.
+default_config:
+
+homeassistant:
+  debug: true
+
+logger:
+  default: info
+  logs:
+    custom_components.feller_wiser: debug
+    custom_components.feller_wiser.api: debug
+# The gateway (or the simulator on port 8080) is added via the UI config flow.
