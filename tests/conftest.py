@@ -14,7 +14,9 @@ from homeassistant.const import CONF_HOST
 from homeassistant.core import HomeAssistant
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotExtension
 import pytest_socket
+from syrupy.assertion import SnapshotAssertion
 
 from custom_components.feller_wiser.const import (
     CONF_SERIAL,
@@ -31,8 +33,6 @@ from simulator.faults import FaultConfig
 from simulator.model import FIXTURES, GatewayModel, SimConfig
 from simulator.ws import WsHub
 from tests.const import TEST_SN, TEST_TOKEN, TEST_USER
-
-pytest_plugins = ["pytest_homeassistant_custom_component"]
 
 if sys.platform == "win32":
     # The asyncio self-pipe is an AF_INET socketpair on Windows, which pytest-socket blocks
@@ -76,6 +76,12 @@ class SimHandle:
 @pytest.fixture(autouse=True)
 def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
     """Load custom_components/ in every test."""
+
+
+@pytest.fixture
+def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
+    """Always use the Home Assistant serializer (snapshots live in tests/snapshots/)."""
+    return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 
 @pytest.fixture
