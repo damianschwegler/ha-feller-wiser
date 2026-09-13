@@ -97,12 +97,16 @@ async def _start_sim(model: GatewayModel, *, ticker: bool) -> SimHandle:
     faults = FaultConfig()
     app = create_app(model, faults=faults, ticker=ticker)
     server = TestServer(app, host="127.0.0.1")
-    await server.start_server()
+    try:
+        await server.start_server()
+    except BaseException:
+        await server.close()  # stops the ticker task if the bind failed
+        raise
     return SimHandle(server=server, model=model, faults=faults, hub=app["hub"])
 
 
 @pytest.fixture
-async def simulator(sim_model: GatewayModel) -> AsyncIterator[SimHandle]:
+async def simulator(sim_model: GatewayModel, socket_enabled: None) -> AsyncIterator[SimHandle]:
     """Simulator whose clock only advances via ``advance()`` (deterministic)."""
     handle = await _start_sim(sim_model, ticker=False)
     try:
@@ -112,7 +116,7 @@ async def simulator(sim_model: GatewayModel) -> AsyncIterator[SimHandle]:
 
 
 @pytest.fixture
-async def live_simulator(sim_model: GatewayModel) -> AsyncIterator[SimHandle]:
+async def live_simulator(sim_model: GatewayModel, socket_enabled: None) -> AsyncIterator[SimHandle]:
     """Simulator with a real-time ticker (for end-to-end HA tests)."""
     handle = await _start_sim(sim_model, ticker=True)
     try:
@@ -122,7 +126,7 @@ async def live_simulator(sim_model: GatewayModel) -> AsyncIterator[SimHandle]:
 
 
 @pytest.fixture
-async def http_session() -> AsyncIterator[ClientSession]:
+async def http_session(socket_enabled: None) -> AsyncIterator[ClientSession]:
     async with ClientSession() as session:
         yield session
 
